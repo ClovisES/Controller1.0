@@ -84,7 +84,7 @@ list1 = [rel1,rel2,rel3,rel4,rel5,rel6,rel7,rel8,rel9,rel10]
 
 
 while 1 : 
-	var= raw_input('Enter char: ')
+	var= raw_input('Enter relay # or kill with entering off: ')
 	if var == '1' :
 		
 		 GPIO.output(rel1, GPIO.LOW)
