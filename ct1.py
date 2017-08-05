@@ -15,17 +15,17 @@ import RPi.GPIO as GPIO
 import time
 
 
-# Pin definitions 
-rel1 = 5 # Relay 1 Q_PP001 pump water 
-rel2 = 6 # Relay 2 Q_PP002 pump dosifier
-rel3 = 13 # Relay 3 Q_PP003 pump irrigation
-rel4 = 19 # Relay 4 Q_XV001 irrigation zone A 
-rel5 = 26 # Relay 5 Q_XV002 irrigation zone B
-rel6 = 21 # Relay 6 Q_XV003 irrigation zone C
-rel7 = 20 # Relay 7 Q_XV004 irrigation zone D
-rel8 = 16 # Relay 8 Q_XV005 irrigation injector A
-rel9 = 12 # Relay 9 Q_XV006 irrigation injector B
-rel10 = 25 # Relay 10 Q_XV007 irrigation injector C / Acid
+# Pin definitions (updated 7-26-2017)
+rel1 = 5 # Relay 1 Q_XV_007 dosifier injector acid (C)
+rel2 = 6 # Relay 2 Q_XV_006 dosifier injector B
+rel3 = 13 # Relay 3 Q_XV_005 dosifier injector A
+rel4 = 19 # Relay 4 Q_XV_004 irrigation zone D
+rel5 = 26 # Relay 5 Q_XV_003 irrigation zone C
+rel6 = 21 # Relay 6 Q_XV_002 irrigation zone B
+rel7 = 20 # Relay 7 Q_XV_001 irrigation zone A
+rel8 = 16 # Relay 8 Q_PP001 pump water supply
+rel9 = 12 # Relay 9 Q_PP002 pump dosifier
+rel10 = 25 # Relay 10 Q_PP003 pump irrigarion
 
 
 
@@ -33,34 +33,6 @@ rel10 = 25 # Relay 10 Q_XV007 irrigation injector C / Acid
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setup(rel1,GPIO.OUT)
-GPIO.setup(rel2,GPIO.OUT)
-GPIO.setup(rel3,GPIO.OUT)
-GPIO.setup(rel4,GPIO.OUT)
-GPIO.setup(rel5,GPIO.OUT)
-GPIO.setup(rel6,GPIO.OUT)
-GPIO.setup(rel7,GPIO.OUT)
-GPIO.setup(rel8,GPIO.OUT)
-GPIO.setup(rel9,GPIO.OUT)
-GPIO.setup(rel10,GPIO.OUT)
-
-
-#~ 
-#~ rel1_on = GPIO.output(rel1, GPIO.LOW)
-#~ rel1_off = GPIO.output(rel1, GPIO.LOW)
-#~ rel2_on = GPIO.output(rel1, GPIO.LOW)
-#~ rel2_off = GPIO.output(rel1, GPIO.LOW)
-#~ rel3_on = GPIO.output(rel1, GPIO.LOW)
-#~ rel3_off = GPIO.output(rel1, GPIO.LOW)
-#~ rel4_on = GPIO.output(rel1, GPIO.LOW)
-#~ rel4_off = GPIO.output(rel1, GPIO.LOW)
-#~ rel5_on = GPIO.output(rel1, GPIO.LOW)
-#~ rel5_off = GPIO.output(rel1, GPIO.LOW)
-#~ rel6_on = GPIO.output(rel1, GPIO.LOW)
-#~ rel6_off = GPIO.output(rel1, GPIO.LOW)
-
-
-
 
 #RTC definition 
 
@@ -73,13 +45,15 @@ GPIO.setup(rel10,GPIO.OUT)
 
 
 # Read characters to active relays, off = kill all relays 
-# each charactter actives a relay, just one relay is activated at a time 
+# each character actives a relay, just one relay is activated at a time 
 
 list1 = [rel1,rel2,rel3,rel4,rel5,rel6,rel7,rel8,rel9,rel10]
 
+# Tito
+# GPIO setup outputs and Start up all off
+GPIO.setup(list1,GPIO.OUT, initial=GPIO.HIGH)
 
-
-
+# end Tito
 
 
 
